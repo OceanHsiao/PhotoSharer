@@ -15,6 +15,10 @@
 		85645FF81DAA3E1D005293B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85645FF61DAA3E1D005293B2 /* LaunchScreen.storyboard */; };
 		856460031DAA3E1D005293B2 /* PhotoSharerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 856460021DAA3E1D005293B2 /* PhotoSharerTests.m */; };
 		8564600E1DAA3E1D005293B2 /* PhotoSharerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564600D1DAA3E1D005293B2 /* PhotoSharerUITests.m */; };
+		8564603B1DAA3F8A005293B2 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856460381DAA3F8A005293B2 /* FBSDKCoreKit.framework */; };
+		8564603C1DAA3F8A005293B2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856460391DAA3F8A005293B2 /* FBSDKLoginKit.framework */; };
+		8564603D1DAA3F8A005293B2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8564603A1DAA3F8A005293B2 /* FBSDKShareKit.framework */; };
+		856460401DAA40D0005293B2 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564603F1DAA40D0005293B2 /* ShareViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,11 @@
 		856460091DAA3E1D005293B2 /* PhotoSharerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoSharerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8564600D1DAA3E1D005293B2 /* PhotoSharerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhotoSharerUITests.m; sourceTree = "<group>"; };
 		8564600F1DAA3E1D005293B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		856460381DAA3F8A005293B2 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		856460391DAA3F8A005293B2 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		8564603A1DAA3F8A005293B2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		8564603E1DAA40D0005293B2 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		8564603F1DAA40D0005293B2 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8564603C1DAA3F8A005293B2 /* FBSDKLoginKit.framework in Frameworks */,
+				8564603B1DAA3F8A005293B2 /* FBSDKCoreKit.framework in Frameworks */,
+				8564603D1DAA3F8A005293B2 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +93,8 @@
 		85645FDC1DAA3E1D005293B2 = {
 			isa = PBXGroup;
 			children = (
+				856460311DAA3F2D005293B2 /* Frameworks */,
+				8564601B1DAA3E29005293B2 /* Resources */,
 				85645FE71DAA3E1D005293B2 /* PhotoSharer */,
 				856460011DAA3E1D005293B2 /* PhotoSharerTests */,
 				8564600C1DAA3E1D005293B2 /* PhotoSharerUITests */,
@@ -110,6 +124,8 @@
 				85645FF61DAA3E1D005293B2 /* LaunchScreen.storyboard */,
 				85645FF91DAA3E1D005293B2 /* Info.plist */,
 				85645FE81DAA3E1D005293B2 /* Supporting Files */,
+				8564603E1DAA40D0005293B2 /* ShareViewController.h */,
+				8564603F1DAA40D0005293B2 /* ShareViewController.m */,
 			);
 			path = PhotoSharer;
 			sourceTree = "<group>";
@@ -138,6 +154,23 @@
 				8564600F1DAA3E1D005293B2 /* Info.plist */,
 			);
 			path = PhotoSharerUITests;
+			sourceTree = "<group>";
+		};
+		8564601B1DAA3E29005293B2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		856460311DAA3F2D005293B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				856460381DAA3F8A005293B2 /* FBSDKCoreKit.framework */,
+				856460391DAA3F8A005293B2 /* FBSDKLoginKit.framework */,
+				8564603A1DAA3F8A005293B2 /* FBSDKShareKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +305,7 @@
 			files = (
 				85645FF01DAA3E1D005293B2 /* ViewController.m in Sources */,
 				85645FED1DAA3E1D005293B2 /* AppDelegate.m in Sources */,
+				856460401DAA40D0005293B2 /* ShareViewController.m in Sources */,
 				85645FEA1DAA3E1D005293B2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,6 +447,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+					"~/Documents/FacebookSDK",
+				);
 				INFOPLIST_FILE = PhotoSharer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oceandev.PhotoSharer;
@@ -424,6 +464,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Frameworks",
+					"~/Documents/FacebookSDK",
+				);
 				INFOPLIST_FILE = PhotoSharer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.oceandev.PhotoSharer;
