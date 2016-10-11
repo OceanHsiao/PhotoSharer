@@ -44,8 +44,6 @@
                                  action:@selector(dismissKeyboard)];
   
   [self.view addGestureRecognizer:tap];
-  FBSDKLoginManager *logout = [[FBSDKLoginManager alloc] init];
-  [logout logOut];
 }
 
 - (void)didReceiveMemoryWarning {
