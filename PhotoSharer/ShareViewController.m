@@ -39,6 +39,9 @@
   if (imgSharePhoto)
     self.imgSharePhotoView.image = imgSharePhoto;
   
+  //Tap the root view of ShareViewController,
+  //it will call dismissKeyboard
+  //and dismiss Keyboard if the keyboard shown up at that time
   UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                  initWithTarget:self
                                  action:@selector(dismissKeyboard)];
@@ -79,16 +82,15 @@
 }
 
 - (void) doShareWithFaceBook {
-
   FBSDKSharePhotoContent *content = [[FBSDKSharePhotoContent alloc]init];
   
   FBSDKSharePhoto *photo = [[FBSDKSharePhoto alloc]init];
   photo.image = imgSharePhoto;
   //photo.userGenerated = YES;
   content.photos = @[photo];
-  if (txtFieldHashtag.text)
+  if (![txtFieldHashtag.text isEqualToString:@""] && [self validateHashTag:txtFieldHashtag.text]) {
     content.hashtag = [FBSDKHashtag hashtagWithString:[NSString stringWithFormat:@"#%@",txtFieldHashtag.text]];
-  
+  }
   fbDialog = [[FBSDKShareDialog alloc] init];
   
   /***************************************************************************************
@@ -144,7 +146,6 @@
 }
 
 #pragma mark - FBSDKSharingDelegate
-
 - (void)sharer:(id<FBSDKSharing>)sharer didCompleteWithResults:(NSDictionary *)results
 {
   NSLog(@"completed share:%@", results);
@@ -163,8 +164,9 @@
   fbDialog = nil;
 }
 
+#pragma mark - Twitter sharing
 - (IBAction) sharePhotoOntoTwitter:(id)sender {
-  SLComposeViewController *twitterController=[SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+  SLComposeViewController *twitterController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
   
   /**
    ServiceType:
@@ -182,21 +184,32 @@
         case SLComposeViewControllerResultCancelled:
         default:
         {
-          NSLog(@"Cancelled.....");
+          NSLog(@"share cancelled");
           
         }
           break;
         case SLComposeViewControllerResultDone:
         {
-          NSLog(@"Posted....");
+          NSLog(@"completed share");
         }
           break;
       }};
     
-    [twitterController addImage:imgSharePhoto];
-
+    [twitterController addImage:imgSharePhoto]; //Add photo
+    if (![txtFieldHashtag.text isEqualToString:@""] && [self validateHashTag:txtFieldHashtag.text])
+      [twitterController setInitialText:[NSString stringWithFormat:@"#%@",txtFieldHashtag.text]];//Add hashtag
+    else
+      
     [twitterController setCompletionHandler:completionHandler];
     [self presentViewController:twitterController animated:YES completion:nil];
+  }
+}
+
+- (void)sharingStatus {
+  if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+    NSLog(@"service available");
+  } else {
+    NSLog(@"service NOT available");
   }
 }
 
@@ -216,14 +229,13 @@
     CGPoint newOffset = CGPointMake(0, kOFFSET_FOR_KEYBOARD);
     [self.mainScrollView setContentOffset: newOffset animated: YES];
   } else {
-    CGPoint newOffset = CGPointMake(0, 0);
+    CGPoint newOffset = CGPointZero;
     [self.mainScrollView setContentOffset: newOffset animated: YES];
   }
 }
 
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   // register for keyboard notifications
   [[NSNotificationCenter defaultCenter] addObserver:self
@@ -236,12 +248,14 @@
                                                name:UIKeyboardWillHideNotification
                                              object:nil];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sharingStatus) name:ACAccountStoreDidChangeNotification object:nil];
-
+  // register for twitter's account store change notification
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(sharingStatus)
+                                               name:ACAccountStoreDidChangeNotification
+                                             object:nil];
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   // unregister for keyboard notifications while not visible.
   [[NSNotificationCenter defaultCenter] removeObserver:self
@@ -252,20 +266,48 @@
                                                   name:UIKeyboardWillHideNotification
                                                 object:nil];
   
-  [[NSNotificationCenter defaultCenter] removeObserver:ACAccountStoreDidChangeNotification];
+  // unregister for twitter's account store change notification
+  [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                  name:ACAccountStoreDidChangeNotification
+                                                object:nil];
 }
 
-- (void)sharingStatus {
-  if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-    NSLog(@"service available");
-  } else {
-    NSLog(@"service NOT available");
-  }
-}
-
--(void)dismissKeyboard {
+- (void)dismissKeyboard {
+  /** 
+   This will resign the first responder (and dismiss the keyboard) every time, 
+   without you needing to send resignFirstResponder to the proper view. 
+   No matter what, this will dismiss the keyboard.
+   **/
   [self.txtFieldHashtag resignFirstResponder];
 }
 
+- (BOOL)validateHashTag:(NSString *)hashtag {
+  NSError* error = nil;
+
+  NSRegularExpression *regEx = [NSRegularExpression regularExpressionWithPattern:@"^(\\d|\\w|_)+$" options:0 error:&error];
+  NSUInteger regExMatches = [regEx numberOfMatchesInString:hashtag options:0 range:NSMakeRange(0, [hashtag length])];
+  
+  if (regExMatches == 0) {
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Unvalid Hashtag!"
+                                 message:@"The hashtag string could not include non-character."
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                  //Handle your yes please button action here
+                                  
+                                }];
+    [alert addAction:yesButton];
+
+    [self presentViewController:alert animated:YES completion:nil];
+
+    return NO;
+  } else {
+    return YES;
+  }
+}
 
 @end

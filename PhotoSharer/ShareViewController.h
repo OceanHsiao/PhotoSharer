@@ -17,9 +17,7 @@
 @property (nonatomic, strong) UIImage *imgSharePhoto;
 @property (nonatomic, strong) FBSDKShareDialog *fbDialog;
 
-- (IBAction) sharePhotoOntoFacebook:(id)sender;
-- (IBAction) sharePhotoOntoTwitter:(id)sender;
-- (void) doShareWithFaceBook;
-
+- (IBAction)sharePhotoOntoFacebook:(id)sender;
+- (IBAction)sharePhotoOntoTwitter:(id)sender;
 
 @end
