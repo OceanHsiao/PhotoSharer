@@ -19,6 +19,13 @@
 		8564603C1DAA3F8A005293B2 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 856460391DAA3F8A005293B2 /* FBSDKLoginKit.framework */; };
 		8564603D1DAA3F8A005293B2 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8564603A1DAA3F8A005293B2 /* FBSDKShareKit.framework */; };
 		856460401DAA40D0005293B2 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8564603F1DAA40D0005293B2 /* ShareViewController.m */; };
+		856460541DAA6CCA005293B2 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 8564604E1DAA6CCA005293B2 /* camera.png */; };
+		856460561DAA6CCA005293B2 /* flickr.png in Resources */ = {isa = PBXBuildFile; fileRef = 856460501DAA6CCA005293B2 /* flickr.png */; };
+		856460571DAA6CCA005293B2 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 856460511DAA6CCA005293B2 /* share.png */; };
+		856460581DAA6CCA005293B2 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 856460521DAA6CCA005293B2 /* twitter.png */; };
+		8564605C1DAA715E005293B2 /* Facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 8564605B1DAA715E005293B2 /* Facebook.png */; };
+		8564605E1DAA7371005293B2 /* album.png in Resources */ = {isa = PBXBuildFile; fileRef = 8564605D1DAA7371005293B2 /* album.png */; };
+		856460601DAA84E4005293B2 /* add_photo_here.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8564605F1DAA84E4005293B2 /* add_photo_here.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +67,13 @@
 		8564603A1DAA3F8A005293B2 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		8564603E1DAA40D0005293B2 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		8564603F1DAA40D0005293B2 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		8564604E1DAA6CCA005293B2 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = Resources/camera.png; sourceTree = "<group>"; };
+		856460501DAA6CCA005293B2 /* flickr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flickr.png; path = Resources/flickr.png; sourceTree = "<group>"; };
+		856460511DAA6CCA005293B2 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = Resources/share.png; sourceTree = "<group>"; };
+		856460521DAA6CCA005293B2 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = twitter.png; path = Resources/twitter.png; sourceTree = "<group>"; };
+		8564605B1DAA715E005293B2 /* Facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Facebook.png; path = Resources/Facebook.png; sourceTree = "<group>"; };
+		8564605D1DAA7371005293B2 /* album.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = album.png; path = Resources/album.png; sourceTree = "<group>"; };
+		8564605F1DAA84E4005293B2 /* add_photo_here.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = add_photo_here.jpg; path = Resources/add_photo_here.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,13 +133,13 @@
 				85645FEC1DAA3E1D005293B2 /* AppDelegate.m */,
 				85645FEE1DAA3E1D005293B2 /* ViewController.h */,
 				85645FEF1DAA3E1D005293B2 /* ViewController.m */,
+				8564603E1DAA40D0005293B2 /* ShareViewController.h */,
+				8564603F1DAA40D0005293B2 /* ShareViewController.m */,
 				85645FF11DAA3E1D005293B2 /* Main.storyboard */,
 				85645FF41DAA3E1D005293B2 /* Assets.xcassets */,
 				85645FF61DAA3E1D005293B2 /* LaunchScreen.storyboard */,
 				85645FF91DAA3E1D005293B2 /* Info.plist */,
 				85645FE81DAA3E1D005293B2 /* Supporting Files */,
-				8564603E1DAA40D0005293B2 /* ShareViewController.h */,
-				8564603F1DAA40D0005293B2 /* ShareViewController.m */,
 			);
 			path = PhotoSharer;
 			sourceTree = "<group>";
@@ -159,6 +173,13 @@
 		8564601B1DAA3E29005293B2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8564605F1DAA84E4005293B2 /* add_photo_here.jpg */,
+				8564605D1DAA7371005293B2 /* album.png */,
+				8564605B1DAA715E005293B2 /* Facebook.png */,
+				8564604E1DAA6CCA005293B2 /* camera.png */,
+				856460501DAA6CCA005293B2 /* flickr.png */,
+				856460511DAA6CCA005293B2 /* share.png */,
+				856460521DAA6CCA005293B2 /* twitter.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -277,8 +298,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				85645FF81DAA3E1D005293B2 /* LaunchScreen.storyboard in Resources */,
+				8564605C1DAA715E005293B2 /* Facebook.png in Resources */,
+				8564605E1DAA7371005293B2 /* album.png in Resources */,
 				85645FF51DAA3E1D005293B2 /* Assets.xcassets in Resources */,
+				856460601DAA84E4005293B2 /* add_photo_here.jpg in Resources */,
+				856460561DAA6CCA005293B2 /* flickr.png in Resources */,
 				85645FF31DAA3E1D005293B2 /* Main.storyboard in Resources */,
+				856460581DAA6CCA005293B2 /* twitter.png in Resources */,
+				856460541DAA6CCA005293B2 /* camera.png in Resources */,
+				856460571DAA6CCA005293B2 /* share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +570,7 @@
 				856460141DAA3E1D005293B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		856460151DAA3E1D005293B2 /* Build configuration list for PBXNativeTarget "PhotoSharerTests" */ = {
 			isa = XCConfigurationList;
@@ -550,6 +579,7 @@
 				856460171DAA3E1D005293B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		856460181DAA3E1D005293B2 /* Build configuration list for PBXNativeTarget "PhotoSharerUITests" */ = {
 			isa = XCConfigurationList;
@@ -558,6 +588,7 @@
 				8564601A1DAA3E1D005293B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
